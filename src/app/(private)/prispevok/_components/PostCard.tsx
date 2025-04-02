@@ -78,6 +78,7 @@ const PostCard: React.FC<PostProps> = ({ post, isProfilePage }) => {
   const [expanded, setExpanded] = useState(false);
   const [previewComments, setPreviewComments] = useState<Comment[]>([]);
   const [commentsCount, setCommentsCount] = useState(0);
+  const [_, setIsLoadingComments] = useState(false);
   
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteCommentId, setDeleteCommentId] = useState<string | null>(null);
@@ -254,7 +255,7 @@ const PostCard: React.FC<PostProps> = ({ post, isProfilePage }) => {
         image={post.imageUrl}
         alt={post.caption || "obrazok"}
         sx={{
-          width: "100%",
+          width: "10%",
           height: "100%",
           objectFit: "cover",
         }}
@@ -273,7 +274,7 @@ const PostCard: React.FC<PostProps> = ({ post, isProfilePage }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          cursor: "pointer",
+          cursor: "pointer",    
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", color: "white" }}>
@@ -321,8 +322,6 @@ const PostCard: React.FC<PostProps> = ({ post, isProfilePage }) => {
             },
           },
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         onClick={() => setPreviewOpen(true)}
       >
         <CardMedia

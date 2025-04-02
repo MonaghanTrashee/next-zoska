@@ -22,7 +22,6 @@ import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import CommentSection from "./CommentSection";
-import { useTheme } from "@mui/material/styles";
 
 type Post = {
   id: string;
@@ -58,7 +57,6 @@ const PostPreviewModal: React.FC<PostPreviewModalProps> = ({
   liked,
   saved,
   likesCount,
-  savesCount,
   onLikeToggle,
   onSaveToggle,
   isLoading,
@@ -115,12 +113,13 @@ const PostPreviewModal: React.FC<PostPreviewModalProps> = ({
           sx={{
             width: { xs: "100%", md: "60%" },
             height: { xs: "auto", md: "100%" },
-            backgroundColor: "black",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             position: "relative",
             overflow: "hidden",
+            bgcolor: "background.default",
+            minHeight: { md: "80vh" }
           }}
         >
           <CardMedia
@@ -130,9 +129,12 @@ const PostPreviewModal: React.FC<PostPreviewModalProps> = ({
             sx={{
               width: "100%",
               height: "100%",
-              maxHeight: { xs: "50vh", md: "80vh" },
+              maxHeight: "100%",
               objectFit: "contain",
-            }}/>
+              display: "flex",
+              alignSelf: "center"
+            }}
+          />
         </Box>
 
         {/* Right side - Content */}
